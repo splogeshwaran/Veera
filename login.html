@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — VEERA Agriculture Platform</title>
+  <meta name="description" content="Sign in to VEERA to access Farmer or Buyer portals.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-page">
+  <div class="bg-deco bg-deco-1"></div>
+  <div class="bg-deco bg-deco-2"></div>
+  <div class="page-wrap">
+    <header class="login-header">
+      <a href="index.html" class="logo-link">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22v-9"/><path d="M12 13c-4-1-7-5-7-10 5 0 9 3 10 7"/><path d="M12 13c3-1 6-4 7-9-4 0-8 3-9 7"/>
+          </svg>
+        </div>
+        <div class="logo-text-wrap">
+          <span class="logo-wordmark">VEERA</span>
+          <span class="logo-tagline">Agri-Community &amp; Marketplace</span>
+        </div>
+      </a>
+      <a href="index.html" class="back-home-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Home
+      </a>
+    </header>
+    <div class="active-session-bar" id="activeSessionBar">
+      <div class="session-info">
+        <span class="session-dot"></span>
+        <span class="session-text">Currently signed in as <strong id="sessionUserName">--</strong> (<span id="sessionUserRole">--</span>)</span>
+      </div>
+      <a href="index.html" class="btn-session-go">Open Dashboard &rarr;</a>
+    </div>
+    <div class="hero-text-block">
+      <h1 class="hero-heading">Sign In to <em>VEERA</em></h1>
+      <p class="hero-sub">One unified platform for Indian agriculture. Select your account type below to access dedicated tools, marketplace trading, and community knowledge.</p>
+    </div>
+
+    <!-- SINGLE UNIFIED LOGIN CARD WITH BOTH USER OPTIONS -->
+    <div class="login-unified-card">
+      <div class="card-stripe" id="cardStripe"></div>
+      
+      <!-- Role Toggle (Switch between Farmer and Buyer in this single card) -->
+      <div class="card-role-toggle">
+        <button type="button" id="tabFarmer" class="role-toggle-btn active" onclick="selectLoginRole('farmer')">
+          🌾 Farmer / Producer
+        </button>
+        <button type="button" id="tabBuyer" class="role-toggle-btn" onclick="selectLoginRole('buyer')">
+          🛒 Buyer / Procurement
+        </button>
+      </div>
+
+      <!-- FARMER CONTENT PANE -->
+      <div id="paneFarmer" class="login-pane active">
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <span class="portal-badge farmer">&#127807; Farmer &amp; Producer</span>
+            <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Cultivator Mode</span>
+          </div>
+          <h2 class="portal-title">Farmer Portal Sign In</h2>
+          <p class="portal-desc">Manage farm listings, track buyer enquiries, run AI agronomy diagnostics, and explore agri opportunities.</p>
+          
+          <div class="demo-box">
+            <div class="demo-box-header">
+              <span class="demo-box-title">1-Click Quick Demo</span>
+              <span class="demo-tag">Instant Access</span>
+            </div>
+            <p class="demo-sub">Sign in as Arun Kumar — verified organic producer with active listings &amp; APMC alerts.</p>
+            <button type="button" class="btn btn-demo-farmer" onclick="quickLogin('farmer')">&#9889; Sign In as Arun Kumar (Farmer &bull; Coimbatore)</button>
+          </div>
+          
+          <div class="portal-divider"><span>Or sign in with custom farmer details</span></div>
+          
+          <form onsubmit="handleLogin(event,'farmer')">
+            <div class="form-group">
+              <label class="form-label" for="farmerName">Farmer Full Name</label>
+              <input type="text" id="farmerName" class="form-control" placeholder="e.g. Ramesh Patel" required value="Ramesh Patel">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="farmerLoc">Farm Location &amp; District</label>
+              <input type="text" id="farmerLoc" class="form-control" placeholder="e.g. Sehore, Madhya Pradesh" required value="Sehore, Madhya Pradesh">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="farmerSize">Cultivated Land Size</label>
+              <input type="text" id="farmerSize" class="form-control" placeholder="e.g. 6.5 Acres" required value="6.5 Acres">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="farmerContact">Mobile Number / Email</label>
+              <input type="text" id="farmerContact" class="form-control" placeholder="+91 98XXX XXXXX" required value="+91 98260 41100">
+            </div>
+            <button type="submit" class="btn btn-farmer">Sign In as Farmer &rarr;</button>
+          </form>
+          
+          <div class="features-list">
+            <div class="feature-item"><span class="feature-check">&#10003;</span> AI Crop Recommendation &amp; Disease Scanner</div>
+            <div class="feature-item"><span class="feature-check">&#10003;</span> List Harvest Produce &amp; Receive Direct Buyer Enquiries</div>
+            <div class="feature-item"><span class="feature-check">&#10003;</span> Real-time Mandi APMC Price Analytics &amp; Trends</div>
+            <div class="feature-item"><span class="feature-check">&#10003;</span> Agri-Tech Career &amp; Project Opportunities</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUYER CONTENT PANE -->
+      <div id="paneBuyer" class="login-pane" style="display:none;">
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <span class="portal-badge buyer">&#128722; Buyer &amp; Procurement</span>
+            <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">Procurement Mode</span>
+          </div>
+          <h2 class="portal-title buyer">Buyer Portal Sign In</h2>
+          <p class="portal-desc">Procure certified chemical-free produce directly from verified growers with zero middleman margins.</p>
+          
+          <div class="demo-box buyer-demo">
+            <div class="demo-box-header">
+              <span class="demo-box-title buyer">1-Click Quick Demo</span>
+              <span class="demo-tag buyer-tag">Instant Access</span>
+            </div>
+            <p class="demo-sub">Sign in as Priya Sharma — Lead Buyer at FreshBasket Organics, Bengaluru.</p>
+            <button type="button" class="btn btn-demo-buyer" onclick="quickLogin('buyer')">&#9889; Sign In as Priya Sharma (Buyer &bull; Bengaluru)</button>
+          </div>
+          
+          <div class="portal-divider"><span>Or sign in with custom buyer details</span></div>
+          
+          <form onsubmit="handleLogin(event,'buyer')">
+            <div class="form-group">
+              <label class="form-label" for="buyerName">Buyer / Company Name</label>
+              <input type="text" id="buyerName" class="form-control buyer-focus" placeholder="e.g. Rahul Verma" required value="Rahul Verma">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="buyerType">Procurement Category</label>
+              <select id="buyerType" class="form-control buyer-focus">
+                <option value="Restaurant / Culinary">Restaurant / Cafe Procurement</option>
+                <option value="Retail Store / Supermarket">Organic Retail Store</option>
+                <option value="Wholesale Merchant">Wholesale Agri Merchant</option>
+                <option value="Household Consumer">Individual / Household Consumer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="buyerLoc">Delivery City &amp; State</label>
+              <input type="text" id="buyerLoc" class="form-control buyer-focus" placeholder="e.g. Chennai, Tamil Nadu" required value="Chennai, Tamil Nadu">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="buyerContact">Contact Email / Phone</label>
+              <input type="text" id="buyerContact" class="form-control buyer-focus" placeholder="rahul@verma.com" required value="rahul@verma.com">
+            </div>
+            <button type="submit" class="btn btn-buyer">Sign In as Buyer &rarr;</button>
+          </form>
+          
+          <div class="features-list">
+            <div class="feature-item"><span class="feature-check buyer-check">&#10003;</span> Verified Organic Farms Directory with Direct Contact</div>
+            <div class="feature-item"><span class="feature-check buyer-check">&#10003;</span> Instant Buy Now on Farm Produce — Zero Middlemen</div>
+            <div class="feature-item"><span class="feature-check buyer-check">&#10003;</span> Transparent Farm-Gate Pricing &amp; Batch Traceability</div>
+            <div class="feature-item"><span class="feature-check buyer-check">&#10003;</span> Post Bulk Procurement Requests (RFQs) to Farmers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="login-footer-note">VEERA &copy; 2026 &bull; Demonstration Platform &bull; All data is simulated for educational purposes.</p>
+  </div>
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="login.js"></script>
+</body>
+</html>

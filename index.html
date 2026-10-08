@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VEERA — Cultivating Community, Harvesting Opportunity | Digital Agriculture Platform</title>
+  <meta name="description"
+    content="VEERA connects farmers, buyers, customers, agriculture communities, AI-powered agriculture tools, and opportunities in one unified digital platform.">
+
+  <!-- Google Fonts: Plus Jakarta Sans · Inter · Playfair Display (3 fonts only) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- =========================================================================
+       MAIN DESKTOP & MOBILE HEADER / NAVBAR
+       ========================================================================= -->
+  <header class="main-header">
+    <div class="nav-container">
+      <a href="#home" class="brand-logo" onclick="navigateTo('home')">
+        <div class="logo-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M12 22v-9" />
+            <path d="M12 13c-4-1-7-5-7-10 5 0 9 3 10 7" />
+            <path d="M12 13c3-1 6-4 7-9-4 0-8 3-9 7" />
+          </svg></div>
+        <div class="brand-text">
+          <h1>VEERA</h1>
+          <span>Agri-Community & Marketplace</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a class="nav-link active" data-section="home" data-role="all" onclick="navigateTo('home')">Home</a></li>
+          <li><a class="nav-link" data-section="community" data-role="all"
+              onclick="navigateTo('community')">Community</a></li>
+          <li><a class="nav-link" data-section="marketplace" data-role="all"
+              onclick="navigateTo('marketplace')">Marketplace</a></li>
+          <!-- Farmer-only nav links -->
+          <li data-nav-farmer><a class="nav-link" data-section="ai" data-role="farmer" onclick="navigateTo('ai')">AI
+              Agri</a></li>
+          <li data-nav-farmer><a class="nav-link" data-section="opportunities" data-role="farmer"
+              onclick="navigateTo('opportunities')">Opportunities</a></li>
+          <!-- Buyer-only nav links -->
+          <li data-nav-buyer style="display:none"><a class="nav-link" data-section="farms" data-role="buyer"
+              onclick="navigateTo('farms')">Find Farms</a></li>
+          <!-- Shared: Dashboard (role content adapts inside) -->
+          <li><a class="nav-link" data-section="dashboard" data-role="all"
+              onclick="navigateTo('dashboard')">Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Sign In button — shown when logged out -->
+        <a id="navSignInBtn" href="login.html" class="btn-nav-signin" style="display:none;">Sign In</a>
+        <!-- User Pill — shown when logged in -->
+        <div id="navUserPill" class="user-pill" onclick="openUserProfile()" title="Click to view profile details">
+          <img id="navUserAvatar"
+            src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=150&q=80"
+            alt="User Avatar" class="user-pill-avatar">
+          <div class="user-pill-info">
+            <span id="navUserName" class="user-pill-name">Arun Kumar</span>
+            <span id="navUserRole" class="user-pill-role">Farmer</span>
+          </div>
+        </div>
+
+        <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle Navigation"><svg width="22"
+            height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =======================================================================
+         1. HOME PAGE SECTION (PRD Section 4 & 4.1)
+         ======================================================================= -->
+    <section id="section-home" class="app-section active">
+      <!-- Hero Banner -->
+      <div class="hero-section">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-content">
+              <h1 class="hero-title">
+                Cultivating Community. <br>
+                Harvesting <span class="highlight">Opportunity.</span>
+              </h1>
+              <p class="hero-description">
+                Connect with farmers, discover farm-fresh agricultural products, explore AI-powered agronomy tools, and
+                find high-impact opportunities — all in one simple digital space.
+              </p>
+
+              <div class="hero-cta-group">
+                <button class="btn btn-primary btn-lg" onclick="navigateTo('marketplace')">
+                  Explore Marketplace
+                </button>
+                <div id="heroBtnFarmer">
+                  <button class="btn btn-secondary btn-lg" onclick="navigateTo('ai')">
+                    Explore AI Tools
+                  </button>
+                </div>
+                <div id="heroBtnBuyer" style="display:none">
+                  <button class="btn btn-secondary btn-lg" onclick="navigateTo('farms')">
+                    Browse Verified Farms
+                  </button>
+                </div>
+                <div id="heroBtnGuest" style="display:flex; gap:10px; flex-wrap:wrap;">
+                  <button class="btn btn-secondary btn-lg" onclick="navigateTo('marketplace')">
+                    Explore Marketplace
+                  </button>
+                  <a class="btn btn-outline btn-lg" href="login.html" style="color:var(--primary-800); border-color:var(--primary-800);">
+                    Sign In to VEERA
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-visual-card">
+              <div class="hero-main-img-box">
+                <img src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=900&q=80"
+                  alt="Farmer in organic tomato farm">
+                <div class="hero-overlay-tag">
+                  <span>Coimbatore Valley Farm Trial</span>
+                </div>
+              </div>
+              <div class="hero-floating-stat">
+                <div class="floating-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M12 22v-9" />
+                    <path d="M12 13c-4-1-7-5-7-10 5 0 9 3 10 7" />
+                    <path d="M12 13c3-1 6-4 7-9-4 0-8 3-9 7" />
+                  </svg></div>
+                <div class="floating-text">
+                  <h4>Direct Farm Sales</h4>
+                  <p>Zero intermediary margins for growers</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Ecosystem Stats Ribbon -->
+      <div class="container">
+        <div class="stats-ribbon">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">1,450+</div>
+              <div class="stat-label">Verified Farmers</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">₹42 Lakhs+</div>
+              <div class="stat-label">Direct Farm Trade</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">18+ Projects</div>
+              <div class="stat-label">Agri-tech Innovations</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">98%</div>
+              <div class="stat-label">Buyer Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Core Pillars Section (PRD Section 3 & 4) -->
+      <section class="section-padding">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Four Core Pillars</span>
+            <h2 class="section-title">Everything Indian Agriculture Needs</h2>
+            <p class="section-subtitle">Bridging traditional agricultural wisdom with modern artificial intelligence,
+              direct marketplace linkages, and technology careers.</p>
+          </div>
+
+          <div class="pillars-grid">
+            <!-- Pillar 1: Community -->
+            <div class="pillar-card community" onclick="navigateTo('community')">
+              <div class="pillar-icon-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <path d="M12 22v-9" />
+                  <path d="M12 13c-4-1-7-5-7-10 5 0 9 3 10 7" />
+                  <path d="M12 13c3-1 6-4 7-9-4 0-8 3-9 7" />
+                </svg></div>
+              <h3 class="pillar-title">Community</h3>
+              <p class="pillar-desc">Connect and share agriculture knowledge. Publish field updates, ask experts,
+                exchange organic pest solutions, and follow progressive farmers.</p>
+              <div class="pillar-link">Explore Community Feed</div>
+            </div>
+
+            <!-- Pillar 2: AI Agriculture (Farmer) / Find Farms (Buyer) -->
+            <div id="pillarAiFarmer" class="pillar-card ai" onclick="navigateTo('ai')">
+              <div class="pillar-icon-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="10" rx="2" />
+                  <circle cx="12" cy="5" r="2" />
+                  <path d="M12 7v4" />
+                  <line x1="8" y1="16" x2="8" y2="16" />
+                  <line x1="16" y1="16" x2="16" y2="16" />
+                </svg></div>
+              <h3 class="pillar-title">AI Agri</h3>
+              <p class="pillar-desc">Simple decision-support tools: Crop recommendation by soil & season, crop disease
+                scanner, and live Mandi market intelligence — exclusively for farmers.</p>
+              <div class="pillar-link">Try AI Agronomy Tools</div>
+            </div>
+            <div id="pillarFindFarmsBuyer" class="pillar-card ai" onclick="navigateTo('farms')" style="display:none">
+              <div class="pillar-icon-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                  <polyline points="9 22 9 12 15 12 15 22" />
+                </svg></div>
+              <h3 class="pillar-title">Find Verified Farms</h3>
+              <p class="pillar-desc">Browse certified organic growers with full traceability — explore their profiles,
+                crops, delivery zones, and connect directly.</p>
+              <div class="pillar-link">Browse Verified Farms</div>
+            </div>
+
+            <!-- Pillar 3: Marketplace -->
+            <div class="pillar-card market" onclick="navigateTo('marketplace')">
+              <div class="pillar-icon-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <circle cx="9" cy="21" r="1" />
+                  <circle cx="20" cy="21" r="1" />
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg></div>
+              <h3 class="pillar-title">Marketplace</h3>
+              <p class="pillar-desc">Showcase harvest produce directly. Connect with restaurants, retail buyers, and
+                households with transparent pricing and real-time enquiry tracking.</p>
+              <div class="pillar-link">Browse Farm Marketplace</div>
+            </div>
+
+            <!-- Pillar 4: Opportunities (Farmer) / Procurement (Buyer) -->
+            <div id="pillarOppsFarmer" class="pillar-card opps" onclick="navigateTo('opportunities')">
+              <div class="pillar-icon-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+                  <path
+                    d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+                </svg></div>
+              <h3 class="pillar-title">Opportunities</h3>
+              <p class="pillar-desc">Discover agriculture jobs, college internships, AI/ML agriculture pilots, sensor
+                collaborations, and institutional procurement contracts.</p>
+              <div class="pillar-link">Find Opportunities</div>
+            </div>
+            <div id="pillarRfqBuyer" class="pillar-card opps" onclick="navigateTo('cart')" style="display:none">
+              <div class="pillar-icon-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                </svg></div>
+              <h3 class="pillar-title">My Procurement</h3>
+              <p class="pillar-desc">Manage your cart, post procurement requests (RFQs), and track pending farm
+                dispatches from your verified supplier network.</p>
+              <div class="pillar-link">Open Buyer Hub</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Produce Preview -->
+      <section class="section-padding" style="background-color: var(--bg-card-subtle);">
+        <div class="container">
+          <div
+            style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 28px; flex-wrap:wrap; gap:16px;">
+            <div>
+              <span class="section-tag">Direct Harvest</span>
+              <h2 class="section-title" style="margin-bottom:0;">Featured Farm Listings</h2>
+            </div>
+            <button class="btn btn-outline" onclick="navigateTo('marketplace')">View All Marketplace Products</button>
+          </div>
+
+          <div id="homeFeaturedProductsGrid" class="products-grid">
+            <!-- Injected via app.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Community Feed Highlights Preview -->
+      <section class="section-padding">
+        <div class="container">
+          <div
+            style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 28px; flex-wrap:wrap; gap:16px;">
+            <div>
+              <span class="section-tag">Community Pulse</span>
+              <h2 class="section-title" style="margin-bottom:0;">Recent Field Conversations</h2>
+            </div>
+            <button class="btn btn-outline" onclick="navigateTo('community')">Join Community Feed</button>
+          </div>
+
+          <div id="homeCommunityHighlights">
+            <!-- Injected via app.js -->
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- =======================================================================
+         2. COMMUNITY SECTION (PRD Section 5)
+         ======================================================================= -->
+    <section id="section-community" class="app-section">
+      <div class="container section-padding">
+        <div class="section-header">
+          <span class="section-tag">Agriculture Community</span>
+          <h2 class="section-title">Field Notes & Knowledge Exchange</h2>
+          <p class="section-subtitle">Real-time conversations between progressive farmers, agronomists, students, and
+            buyers.</p>
+        </div>
+
+        <div class="community-layout">
+          <!-- Left Sidebar -->
+          <aside class="community-sidebar-left">
+            <div class="community-box">
+              <h4 style="font-size: 1rem; color: var(--primary-800); margin-bottom: 14px;">Feed Topics</h4>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+                <li><button class="category-pill active" style="width:100%; text-align:left;"
+                    onclick="filterCommunityPosts('All')">All Updates</button></li>
+                <li><button class="category-pill" style="width:100%; text-align:left;"
+                    onclick="filterCommunityPosts('Harvest Updates')">Harvest Updates</button></li>
+                <li><button class="category-pill" style="width:100%; text-align:left;"
+                    onclick="filterCommunityPosts('Agri-Tech')">Agri-Tech & AI</button></li>
+                <li><button class="category-pill" style="width:100%; text-align:left;"
+                    onclick="filterCommunityPosts('Farming Tips')">Organic Farming Tips</button></li>
+              </ul>
+            </div>
+
+            <div class="community-box">
+              <h4 style="font-size: 0.95rem; color: var(--primary-800); margin-bottom: 10px;">Featured Grower</h4>
+              <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+                <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=100&q=80"
+                  style="width:40px; height:40px; border-radius:50%; object-fit:cover;" alt="Arun">
+                <div>
+                  <div style="font-weight:700; font-size:0.9rem; color:var(--primary-800);">Arun Kumar</div>
+                  <div style="font-size:0.75rem; color:var(--text-light);">Coimbatore, TN (4.5 ac)</div>
+                </div>
+              </div>
+              <button class="btn btn-outline btn-sm" style="width:100%;" onclick="viewFarmerProfile('farmer-1')">View
+                Digital Farm</button>
+            </div>
+          </aside>
+
+          <!-- Center Feed -->
+          <div class="community-feed-main">
+            <!-- Create Post Box -->
+            <div class="feed-header-card">
+              <img id="feedUserAvatar"
+                src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=150&q=80"
+                style="width:42px; height:42px; border-radius:50%; object-fit:cover;" alt="You">
+              <button class="create-post-trigger" onclick="openCreatePostModal()">
+                Share a farm harvest update, agronomy question, or field photo...
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="openCreatePostModal()">
+                Post
+              </button>
+            </div>
+
+            <!-- Posts List Container -->
+            <div id="communityPostsContainer">
+              <!-- Rendered via app.js -->
+            </div>
+          </div>
+
+          <!-- Right Sidebar -->
+          <aside class="community-sidebar-right">
+            <div class="community-box">
+              <h4 style="font-size: 1rem; color: var(--primary-800); margin-bottom: 12px;">Agri Guidelines</h4>
+              <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
+                VEERA fosters helpful, supportive, and scientifically sound agricultural dialogue. Respect regional
+                practices and share genuine field experiences.
+              </p>
+              <div
+                style="background:var(--secondary-subtle); padding:10px 14px; border-radius:8px; font-size:0.8rem; color:var(--primary-800);">
+                Tip: Upload high resolution leaf pictures for pest queries.
+              </div>
+            </div>
+
+            <div class="community-box">
+              <h4 style="font-size: 0.95rem; color: var(--primary-800); margin-bottom: 10px;">Mandi Quick Check</h4>
+              <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:6px;">Coimbatore Tomato APMC:</div>
+              <div style="font-size:1.4rem; font-weight:800; color:var(--primary-800);">₹35 / kg <span
+                  style="font-size:0.75rem; color:var(--secondary);">▲ +12.9%</span></div>
+              <button class="btn btn-outline btn-sm" style="margin-top:10px; width:100%;"
+                onclick="navigateTo('ai', 'tab-market')">Open Market Intel</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         3. MARKETPLACE SECTION (PRD Section 6 & 7)
+         ======================================================================= -->
+    <section id="section-marketplace" class="app-section">
+      <div class="container section-padding">
+        <!-- Role-Specific Action Strip -->
+        <div class="marketplace-hero-strip">
+          <div>
+            <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 6px;">Farmer-to-Buyer Marketplace</h2>
+            <p id="marketSubtext" style="font-size: 0.95rem; opacity: 0.9; max-width: 580px;">
+              Zero middleman commissions. Direct procurement of farm produce with complete farm traceability.
+            </p>
+          </div>
+          <div id="marketFarmerActions">
+            <button class="btn btn-accent btn-lg" onclick="openAddProductModal()">
+              + List Fresh Harvest
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter & Search Controls -->
+        <div class="marketplace-filter-bar">
+          <div class="filter-search-row">
+            <div class="search-input-wrapper">
+              <span class="search-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></span>
+              <input type="text" id="marketSearchInput"
+                placeholder="Search tomatoes, wheat, turmeric, coconut, onions..." oninput="handleMarketSearch()">
+            </div>
+            <select id="marketSortSelect" class="filter-select" onchange="handleMarketSort()">
+              <option value="default">Sort: Default</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="organic">Organic Only</option>
+            </select>
+            <select id="marketLocationFilter" class="filter-select" onchange="handleMarketLocationFilter()">
+              <option value="all">All Locations</option>
+              <option value="Coimbatore">Coimbatore, Tamil Nadu</option>
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Gujarat">Gujarat</option>
+            </select>
+          </div>
+
+          <!-- Category Pills (PRD Categories) -->
+          <div class="category-pills-row">
+            <button class="category-pill active" onclick="filterMarketCategory('All', this)">All Produce</button>
+            <button class="category-pill" onclick="filterMarketCategory('Vegetables', this)">Vegetables</button>
+            <button class="category-pill" onclick="filterMarketCategory('Fruits', this)">Fruits</button>
+            <button class="category-pill" onclick="filterMarketCategory('Grains', this)">Grains</button>
+            <button class="category-pill" onclick="filterMarketCategory('Pulses', this)">Pulses</button>
+            <button class="category-pill" onclick="filterMarketCategory('Spices', this)">Spices</button>
+            <button class="category-pill" onclick="filterMarketCategory('Dairy', this)">Dairy & Ghee</button>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="marketplaceProductsGrid" class="products-grid">
+          <!-- Rendered via app.js -->
+        </div>
+
+        <!-- Empty State Container -->
+        <div id="marketEmptyState" style="display:none; text-align:center; padding: 60px 20px;">
+          <div style="font-size:3rem; margin-bottom:12px; display:flex; justify-content:center;"><svg width="22"
+              height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22v-9" />
+              <path d="M12 13c-4-1-7-5-7-10 5 0 9 3 10 7" />
+              <path d="M12 13c3-1 6-4 7-9-4 0-8 3-9 7" />
+            </svg></div>
+          <h3 style="font-size:1.4rem; color:var(--primary-800); margin-bottom:8px;">No agricultural products found</h3>
+          <p style="color:var(--text-light); margin-bottom:16px;">Try adjusting your keyword search or category filters.
+          </p>
+          <button class="btn btn-outline" onclick="resetMarketFilters()">Reset All Filters</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         4. AI AGRICULTURE SECTION (PRD Sections 9, 10, 11, 12)
+         ======================================================================= -->
+    <section id="section-ai" class="app-section">
+      <div class="container section-padding">
+        <div class="section-header">
+          <span class="section-tag">AI Agronomy Engine</span>
+          <h2 class="section-title">Intelligent Assistance for Growers</h2>
+          <p class="section-subtitle">Demonstrating practical, accessible artificial intelligence tools tailored for
+            everyday agricultural decisions.</p>
+        </div>
+
+        <div class="ai-section-container">
+          <!-- Tool Switcher Tabs -->
+          <div class="ai-nav-tabs">
+            <button class="ai-tab-btn active" onclick="switchAiTab('crop-rec', this)">
+              Crop Recommendation
+            </button>
+            <button class="ai-tab-btn" onclick="switchAiTab('disease-scan', this)">
+              Crop Disease Detection
+            </button>
+            <button class="ai-tab-btn" onclick="switchAiTab('market-intel', this)">
+              Market Intelligence
+            </button>
+          </div>
+
+          <!-- TOOL 1: Crop Recommendation (PRD Section 10) -->
+          <div id="aiToolCropRec" class="ai-tool-card active">
+            <div class="tool-header-block">
+              <div class="tool-header-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <path d="M12 22v-9" />
+                  <path d="M12 13c-4-1-7-5-7-10 5 0 9 3 10 7" />
+                  <path d="M12 13c3-1 6-4 7-9-4 0-8 3-9 7" />
+                </svg></div>
+              <h3 style="font-size:1.6rem; color:var(--primary-800); margin-bottom:8px;">AI Crop Recommendation</h3>
+              <p style="color:var(--text-muted); font-size:0.95rem;">
+                Select soil type, season, and irrigation resources to compute agronomically optimal crop varieties with
+                estimated yields.
+              </p>
+              <div class="tool-disclaimer">
+                Note: Demonstration Decision-Support Result (Not a guaranteed agronomic prediction)
+              </div>
+            </div>
+
+            <div class="crop-rec-grid">
+              <!-- Inputs Form -->
+              <div class="crop-rec-form-panel">
+                <div class="form-group">
+                  <label for="cropRecLocation">Location / Region</label>
+                  <select id="cropRecLocation" class="form-control">
+                    <option value="Coimbatore, Tamil Nadu">Coimbatore, Tamil Nadu (Western Ghats Belt)</option>
+                    <option value="Pune, Maharashtra">Pune / Nashik, Maharashtra</option>
+                    <option value="Indore, Madhya Pradesh">Indore, Madhya Pradesh (Malwa Plateau)</option>
+                    <option value="Guntur, Andhra Pradesh">Guntur / Krishna Basin, AP</option>
+                    <option value="Karnal, Haryana">Karnal, Haryana (Indo-Gangetic Plain)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="cropRecSoil">Soil Type</label>
+                  <select id="cropRecSoil" class="form-control">
+                    <option value="Loamy">Loamy Soil (Rich drainage & balanced humus)</option>
+                    <option value="Black Cotton">Black Cotton Soil (High moisture retention)</option>
+                    <option value="Red Soil">Red Laterite Soil (Porous, iron-rich)</option>
+                    <option value="Alluvial">Alluvial Silt (High natural fertility)</option>
+                    <option value="Sandy Loam">Sandy Loam (Quick drainage)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="cropRecSeason">Cultivation Season</label>
+                  <select id="cropRecSeason" class="form-control">
+                    <option value="Kharif">Kharif (Monsoon Sowing: Jun - Oct)</option>
+                    <option value="Rabi">Rabi (Winter Sowing: Nov - Mar)</option>
+                    <option value="Zaid">Zaid (Summer Cropping: Mar - Jun)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="cropRecWater">Water & Irrigation Availability</label>
+                  <select id="cropRecWater" class="form-control">
+                    <option value="Moderate">Moderate (Borewell / Drip Irrigation)</option>
+                    <option value="Abundant">Abundant (Canal / River Basin / Perennial)</option>
+                    <option value="Low">Low / Rainfed Watershed</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="cropRecSize">Farm Plot Size</label>
+                  <input type="text" id="cropRecSize" class="form-control" value="4.5 Acres">
+                </div>
+
+                <button class="btn btn-primary" style="width:100%; margin-top:10px;" onclick="runCropRecommendation()">
+                  Run AI Crop Analysis
+                </button>
+              </div>
+
+              <!-- Recommendation Result Output -->
+              <div id="cropRecResultBox" class="ai-result-display">
+                <div
+                  style="font-size:0.75rem; font-weight:700; color:var(--text-light); text-transform:uppercase; margin-bottom:8px;">
+                  Agronomy Model Output
+                </div>
+                <div class="crop-result-badge">
+                  <span id="recCropName">Shimla Hybrid Tomato</span>
+                </div>
+                <div class="crop-result-reason" id="recCropReason">
+                  The selected loamy soil texture, Kharif seasonal humidity, and moderate drip irrigation parameters are
+                  exceptionally optimal for indeterminate hybrid tomato cultivation in the Coimbatore agro-climatic
+                  zone.
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px;">
+                  <div style="background:#fff; padding:10px; border-radius:6px; border:1px solid var(--border-subtle);">
+                    <div style="font-size:0.72rem; color:var(--text-light);">ESTIMATED HARVEST</div>
+                    <div id="recCropYield" style="font-weight:800; color:var(--primary-800); font-size:1.1rem;">22 - 25
+                      Tons / Acre</div>
+                  </div>
+                  <div style="background:#fff; padding:10px; border-radius:6px; border:1px solid var(--border-subtle);">
+                    <div style="font-size:0.72rem; color:var(--text-light);">WATER CONSUMPTION</div>
+                    <div id="recCropWater" style="font-weight:800; color:var(--primary-800); font-size:1.1rem;">Drip
+                      Fertigation</div>
+                  </div>
+                </div>
+                <button class="btn btn-outline btn-sm" onclick="runCropRecommendation()">
+                  Recalculate Scenario
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TOOL 2: Crop Disease Detection (PRD Section 11) -->
+          <div id="aiToolDiseaseScan" class="ai-tool-card">
+            <div class="tool-header-block">
+              <div class="tool-header-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <path d="M12 22v-9" />
+                  <path d="M12 13c-4-1-7-5-7-10 5 0 9 3 10 7" />
+                  <path d="M12 13c3-1 6-4 7-9-4 0-8 3-9 7" />
+                </svg></div>
+              <h3 style="font-size:1.6rem; color:var(--primary-800); margin-bottom:8px;">AI Crop Disease Detection</h3>
+              <p style="color:var(--text-muted); font-size:0.95rem;">
+                Demonstrating computer-vision assisted leaf pathology analysis for early detection of fungal, bacterial,
+                and deficiency symptoms.
+              </p>
+              <div class="tool-disclaimer">
+                Note: Demonstration Model (Simulated Edge Vision Diagnostics)
+              </div>
+            </div>
+
+            <div class="disease-detector-grid">
+              <!-- Upload & Sample Selection -->
+              <div>
+                <div class="image-upload-zone" onclick="triggerDiseaseImageUpload()">
+                  <input type="file" id="diseaseFileInput" style="display:none;" accept="image/*"
+                    onchange="handleDiseaseFileUpload(event)">
+                  <div style="margin-bottom:6px; display:flex; justify-content:center;"><svg width="28" height="28"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                      <circle cx="12" cy="13" r="4" />
+                    </svg></div>
+                  <div style="font-weight:700; color:var(--primary-800);">Upload Crop Leaf Image</div>
+                  <p style="font-size:0.8rem; color:var(--text-light); margin-top:4px;">Drag & drop or tap to browse
+                    camera / gallery</p>
+                </div>
+
+                <div class="preview-box">
+                  <img id="diseasePreviewImg"
+                    src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&q=80"
+                    alt="Crop Sample">
+                  <div id="scanLaserBeam" class="scan-beam"></div>
+                </div>
+
+                <!-- Sample Pre-loaded Cases for Quick Verification -->
+                <div class="sample-selectors">
+                  <p>Or tap pre-configured field leaf samples:</p>
+                  <div class="sample-thumbs-row">
+                    <div class="sample-thumb-item selected" onclick="loadSampleDisease(0, this)">
+                      <img
+                        src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=150&q=80"
+                        title="Tomato Blight" alt="Tomato">
+                    </div>
+                    <div class="sample-thumb-item" onclick="loadSampleDisease(1, this)">
+                      <img
+                        src="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=150&q=80"
+                        title="Capsicum Mildew" alt="Capsicum">
+                    </div>
+                    <div class="sample-thumb-item" onclick="loadSampleDisease(2, this)">
+                      <img
+                        src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=150&q=80"
+                        title="Rice Blast" alt="Paddy">
+                    </div>
+                    <div class="sample-thumb-item" onclick="loadSampleDisease(3, this)">
+                      <img
+                        src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=150&q=80"
+                        title="Healthy Foliage" alt="Corn">
+                    </div>
+                  </div>
+                </div>
+
+                <button id="btnAnalyzeDisease" class="btn btn-primary" style="width:100%; margin-top:16px;"
+                  onclick="analyzeCropDisease()">
+                  Analyze Crop Image
+                </button>
+              </div>
+
+              <!-- Diagnostic Result Panel -->
+              <div id="diseaseResultPanel" class="ai-result-display">
+                <div
+                  style="font-size:0.75rem; font-weight:700; color:var(--text-light); text-transform:uppercase; margin-bottom:8px;">
+                  Pathology Diagnostic Report
+                </div>
+
+                <div style="font-size:1.35rem; font-weight:800; color:#b91c1c; margin-bottom:4px;" id="diseaseName">
+                  Early Blight (Alternaria solani)
+                </div>
+                <div style="font-size:0.85rem; color:var(--text-light); margin-bottom:12px;" id="diseaseCropType">
+                  Crop: Tomato • Fungal Pathogen
+                </div>
+
+                <div class="confidence-bar-wrap">
+                  <div class="confidence-label">
+                    <span>AI Model Confidence</span>
+                    <span id="diseaseConfidenceVal">87%</span>
+                  </div>
+                  <div class="confidence-track">
+                    <div id="diseaseConfidenceBar" class="confidence-fill" style="width: 87%;"></div>
+                  </div>
+                </div>
+
+                <div style="margin-bottom:14px;">
+                  <strong
+                    style="font-size:0.82rem; color:var(--primary-800); display:block; margin-bottom:4px;">Diagnostic
+                    Symptoms:</strong>
+                  <p id="diseaseSymptoms" style="font-size:0.88rem; color:var(--text-muted); line-height:1.45;">
+                    Concentric brown target-like rings on mature leaves, surrounded by pale chlorotic yellow halos. Stem
+                    collar lesions visible.
+                  </p>
+                </div>
+
+                <div
+                  style="background:#ffffff; border:1px solid var(--border-subtle); border-radius:8px; padding:12px; margin-bottom:16px;">
+                  <strong
+                    style="font-size:0.82rem; color:var(--primary-800); display:block; margin-bottom:4px;">Suggested
+                    Next Step:</strong>
+                  <p id="diseaseAction" style="font-size:0.85rem; color:var(--text-muted); line-height:1.4;">
+                    Inspect affected leaves, isolate section, and consult an agriculture expert or local KVK before
+                    chemical treatment.
+                  </p>
+                  <div style="margin-top:8px; font-size:0.82rem; color:var(--secondary); font-weight:700;">
+                    Bio Remedy: <span id="diseaseBioRemedy" style="color:var(--text-main); font-weight:normal;">Neem
+                      seed kernel extract (NSKE 5%) foliar spray</span>
+                  </div>
+                </div>
+
+                <button class="btn btn-outline btn-sm" onclick="analyzeCropDisease()">
+                  Analyze Another Image
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TOOL 3: Market Intelligence (PRD Section 12) -->
+          <div id="aiToolMarketIntel" class="ai-tool-card">
+            <div class="tool-header-block">
+              <div class="tool-header-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="20" x2="18" y2="10" />
+                  <line x1="12" y1="20" x2="12" y2="4" />
+                  <line x1="6" y1="20" x2="6" y2="14" />
+                </svg></div>
+              <h3 style="font-size:1.6rem; color:var(--primary-800); margin-bottom:8px;">Mandi Market Intelligence</h3>
+              <p style="color:var(--text-muted); font-size:0.95rem;">
+                Real-time price trend curves, supply-demand indices, and harvest dispatch advisories across key APMC
+                yards.
+              </p>
+              <div class="tool-disclaimer">
+                Demonstration Data — Simulating Daily APMC Modal Rates
+              </div>
+            </div>
+
+            <div class="market-intel-grid">
+              <!-- Controls -->
+              <div>
+                <div class="form-group">
+                  <label for="mandiCropSelect">Select Crop</label>
+                  <select id="mandiCropSelect" class="form-control" onchange="updateMarketIntelligence()">
+                    <option value="Tomato">Tomato (Hybrid Red)</option>
+                    <option value="Onion">Onion (Nashik Red)</option>
+                    <option value="Banana">Banana (Robusta)</option>
+                    <option value="Wheat">Wheat (Sharbati)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="mandiLocationSelect">Mandi / APMC Yard</label>
+                  <select id="mandiLocationSelect" class="form-control" onchange="updateMarketIntelligence()">
+                    <option value="Coimbatore Mandi">Coimbatore APMC Mandi</option>
+                    <option value="Nashik APMC">Nashik APMC Yard</option>
+                    <option value="Azadpur Mandi">Azadpur Mandi (New Delhi)</option>
+                  </select>
+                </div>
+
+                <div
+                  style="background:var(--bg-card-subtle); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle); margin-top:20px;">
+                  <h4 style="font-size:0.9rem; color:var(--primary-800); margin-bottom:6px;">Harvest Advisory</h4>
+                  <p id="mandiAdvisory" style="font-size:0.85rem; color:var(--text-muted); line-height:1.5;">
+                    Harvest dispatch is favorable over next 3-5 days. Steady festive wholesale demand observed across
+                    south tier-1 markets.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Visual Metrics & Chart -->
+              <div>
+                <div class="mandi-stats-row">
+                  <div class="mandi-stat-tile">
+                    <div class="title">Current Modal Price</div>
+                    <div id="mandiCurrentPrice" class="val">₹35 / kg</div>
+                  </div>
+                  <div class="mandi-stat-tile">
+                    <div class="title">Market Demand</div>
+                    <div id="mandiDemand" class="val" style="color:var(--secondary);">High</div>
+                  </div>
+                  <div class="mandi-stat-tile">
+                    <div class="title">Seasonal Trend</div>
+                    <div id="mandiTrend" class="val">Increasing</div>
+                  </div>
+                </div>
+
+                <!-- Price Curve SVG Chart -->
+                <div class="chart-card-box">
+                  <div class="chart-header">
+                    <div>
+                      <strong style="font-size:0.95rem; color:var(--primary-800);">7-Day Price Movement Trend
+                        (₹/kg)</strong>
+                      <div style="font-size:0.75rem; color:var(--text-light);">Daily weighted average transaction price
+                      </div>
+                    </div>
+                    <span
+                      style="font-size:0.8rem; font-weight:700; color:var(--secondary); background:var(--secondary-subtle); padding:3px 10px; border-radius:12px;">Live
+                      Yard Simulation</span>
+                  </div>
+
+                  <div id="mandiSvgChartContainer" class="svg-chart-container">
+                    <!-- SVG Chart injected via app.js -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         5. OPPORTUNITIES SECTION (PRD Section 13)
+         ======================================================================= -->
+    <section id="section-opportunities" class="app-section">
+      <div class="container section-padding">
+        <div class="section-header">
+          <span class="section-tag">Agri-Tech & Youth Careers</span>
+          <h2 class="section-title">Agriculture Opportunities Hub</h2>
+          <p class="section-subtitle">Connecting youth, AI engineers, developers, and field specialists with pioneering
+            agricultural projects and jobs.</p>
+        </div>
+
+        <div class="opps-filter-bar">
+          <button class="category-pill active" onclick="filterOpportunities('All', this)">All Opportunities</button>
+          <button class="category-pill" onclick="filterOpportunities('Agri-tech Project', this)">Agri-tech
+            Projects</button>
+          <button class="category-pill" onclick="filterOpportunities('Agriculture Jobs', this)">Agriculture
+            Jobs</button>
+          <button class="category-pill" onclick="filterOpportunities('Collaboration', this)">Field
+            Collaborations</button>
+          <button class="category-pill"
+            onclick="filterOpportunities('Professional Internships', this)">Internships</button>
+          <button class="category-pill" onclick="filterOpportunities('Technology Opportunities', this)">Tech &
+            Sourcing</button>
+        </div>
+
+        <div id="opportunitiesGrid" class="opps-grid">
+          <!-- Rendered via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         6. FARMER PROFILE SECTION (PRD Section 8)
+         ======================================================================= -->
+    <section id="section-profile" class="app-section">
+      <div class="container section-padding">
+        <!-- User Digital Profile Card (Adapts to Farmer or Buyer) -->
+        <div class="profile-cover-banner">
+          <img id="profileCoverBannerImg"
+            src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80"
+            alt="Profile Cover">
+        </div>
+        <div class="profile-card-header">
+          <div class="profile-main-avatar-box">
+            <img id="farmerProfileAvatar"
+              src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=300&q=80"
+              alt="Profile Avatar">
+          </div>
+
+          <div class="profile-header-details">
+            <div>
+              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                <h2 id="farmerProfileName" style="font-size:1.8rem; color:var(--primary-800);">Arun Kumar</h2>
+                <span id="farmerProfileRoleBadge" class="role-tag-badge farmer">✓ Verified Producer</span>
+              </div>
+              <p id="farmerProfileTitle" style="color:var(--text-light); font-size:0.95rem; margin-top:2px;">
+                Progressive Organic Horticulturalist &amp; Soil Health Advocate
+              </p>
+              <div class="farmer-meta-specs" id="profileMetaSpecs">
+                <div class="meta-spec-item" id="specLocationWrap">
+                  <span>Location:</span> <span id="farmerProfileLocation">Coimbatore, Tamil Nadu</span>
+                </div>
+                <div class="meta-spec-item" id="specSizeWrap">
+                  <span id="specLabelSize">Size:</span> <span id="farmerProfileSize">4.5 Acres</span>
+                </div>
+                <div class="meta-spec-item" id="specExpWrap">
+                  <span id="specLabelExp">Experience:</span> <span id="farmerProfileExp">12 Years</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap;" id="profileActionButtons">
+              <button class="btn btn-outline" onclick="openCreatePostModal()">
+                Share Update
+              </button>
+              <button class="btn btn-primary" onclick="openAddProductModal()">
+                + List Produce
+              </button>
+            </div>
+          </div>
+
+          <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--border-subtle);">
+            <strong id="profileTagsHeading"
+              style="font-size:0.85rem; color:var(--primary-800); display:block; margin-bottom:4px;">Primary Crops
+              Cultivated:</strong>
+            <div id="farmerProfileCrops" class="crops-tag-list">
+              <span class="crop-tag-chip">Tomato (Shimla Hybrid)</span>
+              <span class="crop-tag-chip">Tender Coconut (Pollachi)</span>
+              <span class="crop-tag-chip">Robusta Banana</span>
+              <span class="crop-tag-chip">Moringa</span>
+            </div>
+          </div>
+
+          <p id="farmerProfileBio"
+            style="margin-top:16px; font-size:0.95rem; color:var(--text-muted); line-height:1.6;">
+            Third-generation farmer practicing sustainable precision drip agriculture and soil rejuvenation in the
+            foothills of Coimbatore. Dedicated to chemical-free nutrient-dense farming.
+          </p>
+
+          <div
+            style="margin-top:20px; padding-top:14px; border-top:1px solid var(--border-subtle); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div style="font-size:0.82rem; color:var(--text-light);">
+              Contact Info: <span id="profileUserContact">+91 98421 77320 • arun.farm@veeramail.in</span>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <button class="btn btn-outline btn-sm" onclick="window.location.href='login.html'">Switch Account</button>
+              <button class="btn btn-outline btn-sm" style="color:#b91c1c; border-color:#fca5a5;"
+                onclick="signOutUser()">Sign Out</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Farmer's Listed Products & Field Posts Tabs -->
+        <div>
+          <div style="display:flex; border-bottom:2px solid var(--border-subtle); margin-bottom:24px;">
+            <button id="tabBtnFarmerProds" class="auth-tab-btn active" onclick="switchFarmerProfileTab('products')">
+              Farm Products Listed
+            </button>
+            <button id="tabBtnFarmerPosts" class="auth-tab-btn" onclick="switchFarmerProfileTab('posts')">
+              Community Updates & Field Notes
+            </button>
+          </div>
+
+          <div id="farmerProfileProductsContainer" class="products-grid">
+            <!-- Filtered products rendered via app.js -->
+          </div>
+
+          <div id="farmerProfilePostsContainer" style="display:none; max-width:800px; margin:0 auto;">
+            <!-- Filtered posts rendered via app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         7. DASHBOARD SECTION (PRD Section 14 - Farmer & Buyer Perspectives)
+         ======================================================================= -->
+    <section id="section-dashboard" class="app-section">
+      <div class="container section-padding">
+        <!-- Banner Greeting -->
+        <div class="dashboard-welcome-banner">
+          <div>
+            <h2 id="dashWelcomeTitle" style="font-size:1.8rem; font-weight:800; margin-bottom:4px;">Welcome back, Arun
+            </h2>
+            <p id="dashWelcomeSubtitle" style="font-size:0.95rem; opacity:0.9;">
+              Farmer Command Center • Here is the summary of your listed produce, buyer enquiries, and community reach.
+            </p>
+          </div>
+          <div id="dashQuickSwitchRole">
+            <button class="btn btn-outline-white btn-sm" onclick="window.location.href='login.html'">
+              Switch User Account
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Overview Metric Cards (PRD Section 14) -->
+        <div id="dashStatsGrid" class="dashboard-stats-grid">
+          <!-- Dynamically populated for Farmer vs Buyer via app.js -->
+        </div>
+
+        <!-- Main Dashboard Split Layout -->
+        <div class="dash-layout-grid">
+          <!-- Left Column: Enquiries / Orders -->
+          <div>
+            <!-- Farmer View: Enquiries Received from Buyers -->
+            <div id="dashFarmerEnquiriesPanel" class="dash-panel">
+              <div class="dash-panel-header">
+                <h3 class="dash-panel-title">
+                  Enquiries Received from Buyers
+                </h3>
+                <span id="enquiryCountBadge" class="enquiry-status-pill status-new">3 Active</span>
+              </div>
+              <div id="dashEnquiriesList">
+                <!-- Enquiries rendered via app.js -->
+              </div>
+            </div>
+
+            <!-- Buyer View: My Sent Enquiries -->
+            <div id="dashBuyerEnquiriesPanel" class="dash-panel" style="display:none;">
+              <div class="dash-panel-header">
+                <h3 class="dash-panel-title">
+                  My Direct Farm Enquiries
+                </h3>
+                <span class="enquiry-status-pill status-responded">Direct Linkage</span>
+              </div>
+              <div id="dashBuyerEnquiriesList">
+                <!-- Buyer enquiries rendered via app.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Quick Actions & Recent Activity -->
+          <div>
+            <!-- Quick Actions (PRD Section 14) -->
+            <div class="dash-panel">
+              <div class="dash-panel-header">
+                <h3 class="dash-panel-title">
+                  Quick Actions
+                </h3>
+              </div>
+              <div class="quick-actions-grid">
+                <div class="quick-action-tile" onclick="openAddProductModal()">
+                  <div class="quick-action-icon">+</div>
+                  <div class="quick-action-title">List Produce</div>
+                </div>
+                <div class="quick-action-tile" onclick="openCreatePostModal()">
+                  <div class="quick-action-icon">Post</div>
+                  <div class="quick-action-title">Create Post</div>
+                </div>
+                <div class="quick-action-tile" onclick="navigateTo('ai')">
+                  <div class="quick-action-icon">AI</div>
+                  <div class="quick-action-title">Ask AI Tools</div>
+                </div>
+                <div class="quick-action-tile" onclick="navigateTo('marketplace')">
+                  <div class="quick-action-icon">Shop</div>
+                  <div class="quick-action-title">Marketplace</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Activity Timeline (PRD Section 14) -->
+            <div class="dash-panel">
+              <div class="dash-panel-header">
+                <h3 class="dash-panel-title">
+                  Recent Activity
+                </h3>
+              </div>
+              <div id="dashActivityTimeline" style="display:flex; flex-direction:column; gap:14px; font-size:0.85rem;">
+                <div style="display:flex; gap:10px; align-items:flex-start;">
+                  <span class="timeline-tag">Produce</span>
+                  <div>
+                    <strong>Buyer Priya Sharma</strong> sent an enquiry for 200 kg of Shimla Hybrid Tomatoes.
+                    <div style="color:var(--text-light); font-size:0.75rem;">15 minutes ago</div>
+                  </div>
+                </div>
+                <div style="display:flex; gap:10px; align-items:flex-start;">
+                  <span class="timeline-tag">Comment</span>
+                  <div>
+                    <strong>Priya S.</strong> liked your community harvest post.
+                    <div style="color:var(--text-light); font-size:0.75rem;">2 hours ago</div>
+                  </div>
+                </div>
+                <div style="display:flex; gap:10px; align-items:flex-start;">
+                  <span class="timeline-tag">Project</span>
+                  <div>
+                    <strong>New Opportunity:</strong> AI Crop Disease Detection Project opened for field trials.
+                    <div style="color:var(--text-light); font-size:0.75rem;">5 hours ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         8. VERIFIED FARMS DIRECTORY (BUYER ONLY)
+         ======================================================================= -->
+    <section id="section-farms" class="app-section">
+      <div class="container section-padding">
+        <div class="section-header">
+          <span class="section-tag" style="background:#e0f2fe; color:#0369a1;">Buyer Exclusive</span>
+          <h2 class="section-title">Verified Farm Directory</h2>
+          <p class="section-subtitle">Discover certified organic and natural growers. View their crops, delivery zones,
+            certifications, and connect directly — zero middleman.</p>
+        </div>
+
+        <!-- Farm Search Bar -->
+        <div class="marketplace-filter-bar" style="margin-bottom:30px;">
+          <div class="filter-search-row">
+            <div class="search-input-wrapper">
+              <span class="search-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></span>
+              <input type="text" id="farmSearchInput" placeholder="Search by crop, location, or farmer name..."
+                oninput="handleFarmSearch()">
+            </div>
+            <select id="farmCropFilter" class="filter-select" onchange="handleFarmCropFilter()">
+              <option value="all">All Crops</option>
+              <option value="Tomato">Tomatoes</option>
+              <option value="Coconut">Coconut / Tender Coconut</option>
+              <option value="Wheat">Wheat / Grains</option>
+              <option value="Turmeric">Turmeric / Spices</option>
+              <option value="Ghee">Dairy / Ghee</option>
+              <option value="Pulses">Pulses / Dal</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Farms Grid -->
+        <div id="farmsGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:26px;">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         9. BUYER CART & PROCUREMENT REQUESTS (BUYER ONLY)
+         ======================================================================= -->
+    <section id="section-cart" class="app-section">
+      <div class="container section-padding">
+        <div class="section-header">
+          <span class="section-tag" style="background:#e0f2fe; color:#0369a1;">Buyer Exclusive</span>
+          <h2 class="section-title">My Cart & Procurement Hub</h2>
+          <p class="section-subtitle">Manage your selected farm produce, track enquiries, and post direct procurement
+            requests (RFQs) to the farmer network.</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:28px;">
+          <!-- Left: Cart Items -->
+          <div>
+            <div class="dash-panel">
+              <div class="dash-panel-header">
+                <h3 class="dash-panel-title">Selected Farm Produce</h3>
+                <button class="btn btn-secondary btn-sm" onclick="navigateTo('marketplace')">+ Add More</button>
+              </div>
+              <div id="cartItemsList">
+                <!-- Rendered by app.js -->
+              </div>
+              <div id="cartSummaryBox"
+                style="border-top:2px solid var(--primary-800); padding-top:16px; margin-top:16px;">
+                <div
+                  style="display:flex; justify-content:space-between; font-size:1.1rem; font-weight:800; color:var(--primary-800); margin-bottom:12px;">
+                  <span>Total Procurement Value</span>
+                  <span id="cartTotalValue">₹0</span>
+                </div>
+                <button class="btn btn-primary" style="width:100%;" onclick="handleCheckoutEnquiry()">
+                  Send Bulk Enquiry to All Farmers
+                </button>
+              </div>
+            </div>
+
+            <!-- Post a Procurement Request (RFQ) -->
+            <div class="dash-panel">
+              <div class="dash-panel-header">
+                <h3 class="dash-panel-title">Post Procurement Request (RFQ)</h3>
+              </div>
+              <form onsubmit="handleAddRfq(event)">
+                <div class="form-group">
+                  <label>Crop / Produce Needed</label>
+                  <input type="text" id="rfqCrop" class="form-control"
+                    placeholder="e.g. Organic Tomatoes, A2 Ghee, Wheat" required>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                  <div class="form-group">
+                    <label>Quantity Required</label>
+                    <input type="text" id="rfqQty" class="form-control" placeholder="e.g. 300 kg" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Target Price Range</label>
+                    <input type="text" id="rfqPrice" class="form-control" placeholder="e.g. ₹30-36/kg" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Delivery Frequency</label>
+                  <select id="rfqFrequency" class="form-control">
+                    <option value="One-time Batch">One-time Batch</option>
+                    <option value="Weekly Contract">Weekly Contract</option>
+                    <option value="Monthly Supply">Monthly Supply</option>
+                    <option value="Bi-Weekly">Bi-Weekly</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Additional Notes</label>
+                  <textarea id="rfqNotes" class="form-control" rows="2"
+                    placeholder="Delivery preference, quality standard, packaging requirements..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Post Procurement Request</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Right: Active RFQs / Demand Pool -->
+          <div>
+            <div class="dash-panel">
+              <div class="dash-panel-header">
+                <h3 class="dash-panel-title">My Active Procurement Requests</h3>
+              </div>
+              <div id="rfqListContainer">
+                <!-- Rendered by app.js -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =======================================================================
+         10. UNIFIED LOGIN & AUTHENTICATION PAGE (Both User Types on Same Page)
+         ======================================================================= -->
+    <section id="section-login" class="app-section">
+      <div class="container section-padding">
+        <!-- Section Header -->
+        <div class="section-header" style="text-align: center; max-width: 780px; margin: 0 auto 36px auto;">
+          <span class="section-tag">Account Authentication</span>
+          <h2 class="section-title">Sign In to VEERA</h2>
+          <p class="section-subtitle">
+            One platform connecting growers and buyers. Select your role below to access dedicated tools, marketplace
+            transactions, and community knowledge.
+          </p>
+
+          <!-- Current Logged In Status Banner -->
+          <div class="login-active-bar" id="loginActiveUserBar">
+            <div class="login-active-info">
+              <span class="login-status-dot"></span>
+              <span>Currently Active: <strong id="loginActiveUserName">Arun Kumar</strong> (<span
+                  id="loginActiveUserRole">Farmer</span>)</span>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="navigateTo('dashboard')">
+              Open Active Dashboard &rarr;
+            </button>
+          </div>
+        </div>
+
+        <!-- Dual Login Portals Grid (Both Farmer and Buyer on the SAME PAGE) -->
+        <div class="login-portals-grid">
+
+          <!-- PORTAL 1: FARMER -->
+          <div class="login-portal-card farmer-card">
+            <div class="portal-card-header">
+              <span class="portal-role-tag farmer">Farmer &amp; Producer</span>
+              <h3 class="portal-card-title">Farmer Portal</h3>
+              <p class="portal-card-desc">
+                For cultivators, organic growers, and agricultural producers managing farm yields, seeking direct
+                buyers, and utilizing AI agronomy.
+              </p>
+            </div>
+
+            <!-- 1-Click Demo Login -->
+            <div class="portal-demo-box farmer-demo">
+              <div class="demo-box-header">
+                <strong>1-Click Quick Demo Sign In</strong>
+                <span class="demo-badge">Instant Access</span>
+              </div>
+              <p class="demo-box-sub">Sign in as Arun Kumar with verified produce listings and APMC alerts.</p>
+              <button type="button" class="btn btn-secondary btn-block" onclick="quickPageLogin('farmer')">
+                Sign In as Arun Kumar (Farmer &bull; Coimbatore)
+              </button>
+            </div>
+
+            <div class="portal-divider">
+              <span>Or Enter Custom Farmer Details</span>
+            </div>
+
+            <!-- Custom Farmer Form -->
+            <form onsubmit="handlePageLogin(event, 'farmer')" class="portal-custom-form">
+              <div class="form-group">
+                <label for="pageFarmerName">Farmer Full Name</label>
+                <input type="text" id="pageFarmerName" class="form-control" placeholder="e.g. Ramesh Patel" required
+                  value="Ramesh Patel">
+              </div>
+              <div class="form-group">
+                <label for="pageFarmerLoc">Farm Location &amp; District</label>
+                <input type="text" id="pageFarmerLoc" class="form-control" placeholder="e.g. Sehore, Madhya Pradesh"
+                  required value="Sehore, Madhya Pradesh">
+              </div>
+              <div class="form-group">
+                <label for="pageFarmerSize">Cultivated Land Size</label>
+                <input type="text" id="pageFarmerSize" class="form-control" placeholder="e.g. 6.5 Acres" required
+                  value="6.5 Acres">
+              </div>
+              <div class="form-group">
+                <label for="pageFarmerContact">Mobile Number / Email</label>
+                <input type="text" id="pageFarmerContact" class="form-control" placeholder="+91 98XXX XXXXX" required
+                  value="+91 98260 41100">
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">
+                Sign In as Farmer
+              </button>
+            </form>
+
+            <div class="portal-features-summary">
+              <div class="feature-item"><span class="feature-check">&check;</span> AI Crop Recommendation &amp; Disease
+                Scanner</div>
+              <div class="feature-item"><span class="feature-check">&check;</span> List Harvest Produce &amp; Receive
+                Direct Buyer Inquiries</div>
+              <div class="feature-item"><span class="feature-check">&check;</span> Real-time Mandi APMC Price Analytics
+                &amp; Trends</div>
+              <div class="feature-item"><span class="feature-check">&check;</span> Agri-Tech Career &amp; Project
+                Opportunities</div>
+            </div>
+          </div>
+
+          <!-- PORTAL 2: BUYER & CONSUMER -->
+          <div class="login-portal-card buyer-card">
+            <div class="portal-card-header">
+              <span class="portal-role-tag buyer">Buyer &amp; Procurement</span>
+              <h3 class="portal-card-title">Buyer Portal</h3>
+              <p class="portal-card-desc">
+                For commercial restaurants, organic grocery retailers, wholesale merchants, and consumers sourcing
+                certified farm produce.
+              </p>
+            </div>
+
+            <!-- 1-Click Demo Login -->
+            <div class="portal-demo-box buyer-demo">
+              <div class="demo-box-header">
+                <strong>1-Click Quick Demo Sign In</strong>
+                <span class="demo-badge buyer">Instant Access</span>
+              </div>
+              <p class="demo-box-sub">Sign in as Priya Sharma (Lead Buyer at FreshBasket Organics).</p>
+              <button type="button" class="btn btn-primary btn-block" style="background:#1e40af; border-color:#1e40af;"
+                onclick="quickPageLogin('buyer')">
+                Sign In as Priya Sharma (Buyer &bull; Bengaluru)
+              </button>
+            </div>
+
+            <div class="portal-divider">
+              <span>Or Enter Custom Buyer Details</span>
+            </div>
+
+            <!-- Custom Buyer Form -->
+            <form onsubmit="handlePageLogin(event, 'buyer')" class="portal-custom-form">
+              <div class="form-group">
+                <label for="pageBuyerName">Buyer / Company Name</label>
+                <input type="text" id="pageBuyerName" class="form-control" placeholder="e.g. Rahul Verma" required
+                  value="Rahul Verma">
+              </div>
+              <div class="form-group">
+                <label for="pageBuyerType">Procurement Category</label>
+                <select id="pageBuyerType" class="form-control">
+                  <option value="Restaurant / Culinary">Restaurant / Cafe Procurement</option>
+                  <option value="Retail Store / Supermarket">Organic Retail Store</option>
+                  <option value="Wholesale Merchant">Wholesale Agri Merchant</option>
+                  <option value="Household Consumer">Individual / Household Consumer</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="pageBuyerLoc">Delivery City &amp; State</label>
+                <input type="text" id="pageBuyerLoc" class="form-control" placeholder="e.g. Chennai, Tamil Nadu"
+                  required value="Chennai, Tamil Nadu">
+              </div>
+              <div class="form-group">
+                <label for="pageBuyerContact">Contact Email / Phone</label>
+                <input type="text" id="pageBuyerContact" class="form-control" placeholder="rahul@verma.com" required
+                  value="rahul@verma.com">
+              </div>
+              <button type="submit" class="btn btn-primary btn-block" style="background:#1e40af; border-color:#1e40af;">
+                Sign In as Buyer
+              </button>
+            </form>
+
+            <div class="portal-features-summary">
+              <div class="feature-item"><span class="feature-check">&check;</span> Verified Organic Farms Directory with
+                Direct Contact</div>
+              <div class="feature-item"><span class="feature-check">&check;</span> Post Bulk Procurement Requests (RFQs)
+                to Farmers</div>
+              <div class="feature-item"><span class="feature-check">&check;</span> Transparent Farm-Gate Pricing with
+                Zero Middlemen</div>
+              <div class="feature-item"><span class="feature-check">&check;</span> End-to-End Batch Traceability &amp;
+                Inquiries Tracking</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+            <span style="display:inline-flex; align-items:center;"><svg width="22" height="22" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22v-9" />
+                <path d="M12 13c-4-1-7-5-7-10 5 0 9 3 10 7" />
+                <path d="M12 13c3-1 6-4 7-9-4 0-8 3-9 7" />
+              </svg></span>
+            <h3 style="margin:0;">VEERA</h3>
+          </div>
+          <p>
+            Cultivating Community, Harvesting Opportunity. A digital agriculture ecosystem connecting Indian growers,
+            buyers, AI technology, and agricultural careers.
+          </p>
+          <div style="font-size:0.82rem; color:rgba(255,255,255,0.7);">
+            Built for farmers, consumers, researchers, and agronomists.
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Ecosystem</h4>
+          <ul>
+            <li><a href="#marketplace" onclick="navigateTo('marketplace')">Farm Marketplace</a></li>
+            <li><a href="#community" onclick="navigateTo('community')">Community Feed</a></li>
+            <li><a href="#ai" onclick="navigateTo('ai')">AI Crop Tools</a></li>
+            <li><a href="#opportunities" onclick="navigateTo('opportunities')">Agri Opportunities</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>User Portals</h4>
+          <ul>
+            <li><a href="javascript:void(0)" onclick="navigateTo('dashboard');">Dashboard</a></li>
+            <li><a href="javascript:void(0)" onclick="openAddProductModal()">List Fresh Produce</a></li>
+            <li><a href="login.html">Sign In</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Vision</h4>
+          <ul>
+            <li><span style="color:rgba(255,255,255,0.75);">Digital Agriculture India</span></li>
+            <li><span style="color:rgba(255,255,255,0.75);">Zero Middleman Margins</span></li>
+            <li><span style="color:rgba(255,255,255,0.75);">AI-Assisted Precision</span></li>
+            <li><span style="color:rgba(255,255,255,0.75);">Transparent Trade</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        VEERA &copy; 2026. Cultivating Community, Harvesting Opportunity. All Demonstration Data & Models Simulated for
+        Educational & Decision Support Purposes.
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MOBILE BOTTOM NAVIGATION BAR (PRD Section 15)
+       ========================================================================= -->
+  <nav class="mobile-bottom-bar" id="mobileBottomBar">
+    <div class="mobile-nav-item active" onclick="navigateTo('home')">
+      <span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg></span>
+      <span>Home</span>
+    </div>
+    <div class="mobile-nav-item" onclick="navigateTo('community')">
+      <span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <path d="M12 22v-9" />
+          <path d="M12 13c-4-1-7-5-7-10 5 0 9 3 10 7" />
+          <path d="M12 13c3-1 6-4 7-9-4 0-8 3-9 7" />
+        </svg></span>
+      <span>Feed</span>
+    </div>
+    <div class="mobile-nav-item" onclick="navigateTo('marketplace')">
+      <span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <circle cx="9" cy="21" r="1" />
+          <circle cx="20" cy="21" r="1" />
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+        </svg></span>
+      <span>Market</span>
+    </div>
+    <!-- Farmer-only mobile nav -->
+    <div id="mobileNavAi" class="mobile-nav-item" onclick="navigateTo('ai')">
+      <span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <rect x="3" y="11" width="18" height="10" rx="2" />
+          <circle cx="12" cy="5" r="2" />
+          <path d="M12 7v4" />
+          <line x1="8" y1="16" x2="8" y2="16" />
+          <line x1="16" y1="16" x2="16" y2="16" />
+        </svg></span>
+      <span>AI</span>
+    </div>
+    <!-- Buyer-only mobile nav -->
+    <div id="mobileNavFarms" class="mobile-nav-item" style="display:none" onclick="navigateTo('farms')">
+      <span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg></span>
+      <span>Farms</span>
+    </div>
+    <div class="mobile-nav-item" onclick="navigateTo('dashboard')">
+      <span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <line x1="18" y1="20" x2="18" y2="10" />
+          <line x1="12" y1="20" x2="12" y2="4" />
+          <line x1="6" y1="20" x2="6" y2="14" />
+        </svg></span>
+      <span>Portal</span>
+    </div>
+    <div id="mobileNavProfile" class="mobile-nav-item" onclick="openUserProfile()">
+      <span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg></span>
+      <span>Profile</span>
+    </div>
+    <div id="mobileNavSignIn" class="mobile-nav-item" onclick="window.location.href='login.html'">
+      <span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+          <polyline points="10 17 15 12 10 7" />
+          <line x1="15" y1="12" x2="3" y2="12" />
+        </svg></span>
+      <span>Sign In</span>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       MODALS
+       ========================================================================= -->
+
+  <!-- 1. DUAL LOGIN & REGISTRATION MODAL (Separate for Farmers & End Users) -->
+  <div id="modalLogin" class="modal-backdrop">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="loginModalTitle">Sign In to VEERA</h3>
+        <button class="modal-close-btn" onclick="closeModal('modalLogin')">✕</button>
+      </div>
+      <div class="modal-body">
+        <!-- Dual Tabs: Farmer vs Buyer -->
+        <div class="auth-role-tabs">
+          <button id="tabAuthFarmer" class="auth-tab-btn active" onclick="setAuthTab('farmer')">
+            Farmer Portal
+          </button>
+          <button id="tabAuthBuyer" class="auth-tab-btn" onclick="setAuthTab('buyer')">
+            Buyer / End User
+          </button>
+        </div>
+
+        <!-- Farmer Tab Content -->
+        <div id="authContentFarmer">
+          <div class="demo-account-callout">
+            <div style="font-weight:700; color:var(--primary-800); font-size:0.9rem;">1-Click Demo Login as Farmer</div>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-top:3px;">
+              Access full farmer dashboard, list crops, view buyer inquiries, and manage farm profile.
+            </p>
+            <button class="btn btn-secondary btn-sm" style="margin-top:10px; width:100%;"
+              onclick="quickLogin('farmer')">
+              Sign In as Arun Kumar (Farmer • Coimbatore)
+            </button>
+          </div>
+
+          <div style="text-align:center; margin:16px 0; color:var(--text-light); font-size:0.8rem; position:relative;">
+            <span>— OR ENTER CUSTOM FARMER DETAILS —</span>
+          </div>
+
+          <form onsubmit="handleCustomLogin(event, 'farmer')">
+            <div class="form-group">
+              <label>Farmer Name</label>
+              <input type="text" id="custFarmerName" class="form-control" placeholder="e.g. Ramesh Patel" required
+                value="Ramesh Patel">
+            </div>
+            <div class="form-group">
+              <label>Farm Location</label>
+              <input type="text" id="custFarmerLoc" class="form-control" placeholder="e.g. Sehore, Madhya Pradesh"
+                required value="Sehore, Madhya Pradesh">
+            </div>
+            <div class="form-group">
+              <label>Farm Land Size (Acres)</label>
+              <input type="text" id="custFarmerSize" class="form-control" placeholder="e.g. 6 Acres" required
+                value="6 Acres">
+            </div>
+            <div class="form-group">
+              <label>Mobile Number / Email</label>
+              <input type="text" id="custFarmerContact" class="form-control" placeholder="+91 98XXX XXXXX" required
+                value="+91 98260 41100">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">
+              Log In as Farmer
+            </button>
+          </form>
+        </div>
+
+        <!-- Buyer Tab Content -->
+        <div id="authContentBuyer" style="display:none;">
+          <div class="demo-account-callout" style="background:#eff6ff; border-color:#bfdbfe;">
+            <div style="font-weight:700; color:#1e40af; font-size:0.9rem;">1-Click Demo Login as Buyer</div>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-top:3px;">
+              Send direct enquiries, procure chemical-free produce, and connect with farmers.
+            </p>
+            <button class="btn btn-primary btn-sm" style="margin-top:10px; width:100%;" onclick="quickLogin('buyer')">
+              Sign In as Priya Sharma (Buyer • FreshBasket Organics)
+            </button>
+          </div>
+
+          <div style="text-align:center; margin:16px 0; color:var(--text-light); font-size:0.8rem;">
+            <span>— OR ENTER CUSTOM BUYER DETAILS —</span>
+          </div>
+
+          <form onsubmit="handleCustomLogin(event, 'buyer')">
+            <div class="form-group">
+              <label>Buyer / Organization Name</label>
+              <input type="text" id="custBuyerName" class="form-control" placeholder="e.g. Rahul Verma" required
+                value="Rahul Verma">
+            </div>
+            <div class="form-group">
+              <label>Buyer Type</label>
+              <select id="custBuyerType" class="form-control">
+                <option value="Restaurant / Culinary">Restaurant / Cafe Procurement</option>
+                <option value="Retail Store / Supermarket">Organic Retail Store</option>
+                <option value="Wholesale Merchant">Wholesale Agri Merchant</option>
+                <option value="Household Consumer">Individual / Household Consumer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Delivery City / Location</label>
+              <input type="text" id="custBuyerLoc" class="form-control" placeholder="e.g. Chennai, Tamil Nadu" required
+                value="Chennai, Tamil Nadu">
+            </div>
+            <div class="form-group">
+              <label>Contact Email / Phone</label>
+              <input type="text" id="custBuyerContact" class="form-control" placeholder="rahul@verma.com" required
+                value="rahul@verma.com">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">
+              Log In as Buyer
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. PRODUCT DETAILS & BUYER ENQUIRY MODAL (PRD Section 7) -->
+  <div id="modalProductDetails" class="modal-backdrop">
+    <div class="modal-container" style="max-width:680px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="prodModalTitle">Product Details</h3>
+        <button class="modal-close-btn" onclick="closeModal('modalProductDetails')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="border-radius:12px; overflow:hidden; height:260px; margin-bottom:18px;">
+          <img id="prodModalImg" src="" alt="Product" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+          <div>
+            <span id="prodModalCategory" class="product-category-tag">Vegetables</span>
+            <h2 id="prodModalName" style="font-size:1.5rem; color:var(--primary-800); margin:4px 0;">Shimla Hybrid
+              Tomatoes</h2>
+            <div id="prodModalLocation" style="font-size:0.85rem; color:var(--text-light);">Coimbatore, Tamil Nadu</div>
+          </div>
+          <div style="text-align:right;">
+            <div id="prodModalPrice" class="price-main">₹35</div>
+            <div id="prodModalUnit" class="price-unit">per kg</div>
+          </div>
+        </div>
+
+        <div
+          style="display:flex; gap:12px; background:var(--bg-card-subtle); padding:12px 16px; border-radius:8px; margin-bottom:16px;">
+          <div style="flex:1;">
+            <span style="font-size:0.75rem; color:var(--text-light); display:block;">AVAILABILITY</span>
+            <strong id="prodModalAvail">This week</strong>
+          </div>
+          <div style="flex:1;">
+            <span style="font-size:0.75rem; color:var(--text-light); display:block;">STOCK QUANTITY</span>
+            <strong id="prodModalQty">500 kg</strong>
+          </div>
+          <div style="flex:1;">
+            <span style="font-size:0.75rem; color:var(--text-light); display:block;">MIN ORDER</span>
+            <strong id="prodModalMinOrder">25 kg</strong>
+          </div>
+        </div>
+
+        <p id="prodModalDesc" style="font-size:0.92rem; color:var(--text-muted); line-height:1.6; margin-bottom:20px;">
+          Product description details here.
+        </p>
+
+        <!-- Grower Card Box -->
+        <div
+          style="background:#ffffff; border:1px solid var(--border-subtle); border-radius:10px; padding:14px; margin-bottom:22px; display:flex; align-items:center; justify-content:space-between;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <img id="prodModalFarmerAvatar" src="" style="width:44px; height:44px; border-radius:50%; object-fit:cover;"
+              alt="Farmer">
+            <div>
+              <div id="prodModalFarmerName" style="font-weight:700; color:var(--primary-800);">Arun Kumar</div>
+              <div style="font-size:0.75rem; color:var(--text-light);">Verified Organic Grower • Coimbatore</div>
+            </div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="viewFarmerFromProductModal()">
+            View Farmer Profile
+          </button>
+        </div>
+
+        <!-- Direct Quick Buy Action (Buy Now) -->
+        <div style="background:linear-gradient(135deg, rgba(34,197,94,0.14), rgba(244,185,66,0.16)); border:1.5px solid var(--border-green); border-radius:12px; padding:16px 20px; margin-bottom:22px; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+          <div>
+            <strong style="font-size:1.05rem; color:var(--primary-800); display:block; margin-bottom:2px;">⚡ Ready to Purchase This Produce?</strong>
+            <span style="font-size:0.84rem; color:var(--text-muted);">Direct farm-gate checkout with instant dispatch booking</span>
+          </div>
+          <button type="button" class="btn btn-accent" style="padding:11px 26px; font-weight:800; font-size:1rem; box-shadow:var(--shadow-md);" onclick="triggerBuyNowFromProductModal()">
+            ⚡ Buy Now
+          </button>
+        </div>
+
+        <!-- Connect / Enquire Form (PRD Section 7) -->
+        <div style="border-top:1.5px solid var(--border-subtle); padding-top:18px;">
+          <h4 style="font-size:1.1rem; color:var(--primary-800); margin-bottom:8px;">
+            Send Enquiry / Connect with Grower
+          </h4>
+          <p style="font-size:0.82rem; color:var(--text-light); margin-bottom:14px;">
+            Enquiries are directly routed to the farmer's dashboard and mobile notifications.
+          </p>
+
+          <form onsubmit="handleSendEnquiry(event)">
+            <input type="hidden" id="enquiryProductId">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+              <div class="form-group" style="margin:0;">
+                <label>Your Name / Organization</label>
+                <input type="text" id="enquiryBuyerName" class="form-control" required value="Priya Sharma (Buyer)">
+              </div>
+              <div class="form-group" style="margin:0;">
+                <label>Required Quantity</label>
+                <input type="text" id="enquiryQuantity" class="form-control" placeholder="e.g. 150 kg" required
+                  value="150 kg">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Message / Delivery Notes</label>
+              <textarea id="enquiryMessage" class="form-control" rows="2"
+                placeholder="Tell the farmer your delivery timeline or specifications..."
+                required>We require this batch delivered to our Bangalore organic cafe this Friday. Please confirm.</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">
+              Send Direct Enquiry to Farmer
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. LIST PRODUCT MODAL (For Farmers - PRD Section 6) -->
+  <div id="modalAddProduct" class="modal-backdrop">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">List New Harvest Produce</h3>
+        <button class="modal-close-btn" onclick="closeModal('modalAddProduct')">✕</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="handleAddProductSubmit(event)">
+          <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" id="newProdName" class="form-control" placeholder="e.g. Fresh Farm Tomatoes" required>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div class="form-group">
+              <label>Category</label>
+              <select id="newProdCategory" class="form-control">
+                <option value="Vegetables">Vegetables</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Grains">Grains</option>
+                <option value="Pulses">Pulses</option>
+                <option value="Spices">Spices</option>
+                <option value="Dairy">Dairy</option>
+                <option value="Other Farm Products">Other Farm Products</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Price (₹ per unit)</label>
+              <input type="number" id="newProdPrice" class="form-control" placeholder="e.g. 35" required min="1">
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div class="form-group">
+              <label>Unit</label>
+              <select id="newProdUnit" class="form-control">
+                <option value="kg">per kg</option>
+                <option value="nut">per nut / piece</option>
+                <option value="quintal">per quintal</option>
+                <option value="box">per box (10kg)</option>
+                <option value="litre">per litre</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Available Quantity</label>
+              <input type="text" id="newProdQty" class="form-control" placeholder="e.g. 500 kg" required>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div class="form-group">
+              <label>Availability Status</label>
+              <select id="newProdAvail" class="form-control">
+                <option value="This week">This week</option>
+                <option value="Fresh Harvest">Fresh Harvest</option>
+                <option value="Ready to Ship">Ready to Ship</option>
+                <option value="Next 7 Days">Next 7 Days</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Min Order Requirement</label>
+              <input type="text" id="newProdMinOrder" class="form-control" placeholder="e.g. 20 kg" value="20 kg">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Product Photo Preset</label>
+            <select id="newProdImgPreset" class="form-control">
+              <option
+                value="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800&q=80">
+                Fresh Red Tomatoes</option>
+              <option value="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?auto=format&fit=crop&w=800&q=80">
+                Tender Coconuts</option>
+              <option
+                value="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=800&q=80">
+                Sweet Bananas</option>
+              <option
+                value="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=800&q=80">
+                Golden Wheat Grain</option>
+              <option value="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=800&q=80">
+                Green Bell Peppers</option>
+              <option
+                value="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80">
+                Pure Turmeric</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Description / Harvesting Notes</label>
+            <textarea id="newProdDesc" class="form-control" rows="3"
+              placeholder="Grown using natural manure and drip irrigation. Chemical pesticide free."
+              required>Naturally grown farm fresh produce harvested with zero synthetic insecticides.</textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">
+            Publish to Marketplace
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. CREATE COMMUNITY POST MODAL (PRD Section 5) -->
+  <div id="modalCreatePost" class="modal-backdrop">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Share with Agriculture Community</h3>
+        <button class="modal-close-btn" onclick="closeModal('modalCreatePost')">✕</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="handleCreatePostSubmit(event)">
+          <div class="form-group">
+            <label>Category</label>
+            <select id="newPostCategory" class="form-control">
+              <option value="Harvest Updates">Harvest Updates</option>
+              <option value="Farming Tips">Farming Tips</option>
+              <option value="Agri-Tech">Agri-Tech & AI</option>
+              <option value="Pest Alert">Pest & Disease Observation</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Post Content</label>
+            <textarea id="newPostContent" class="form-control" rows="4"
+              placeholder="Share what you are harvesting, soil insights, or asking an agriculture question..."
+              required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Select Sample Field Image</label>
+            <select id="newPostImgPreset" class="form-control">
+              <option
+                value="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800&q=80">
+                Fresh Tomato Harvest</option>
+              <option
+                value="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80">
+                Lush Organic Field</option>
+              <option
+                value="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=800&q=80">
+                Leaf Inspection & Agronomy</option>
+              <option value="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?auto=format&fit=crop&w=800&q=80">
+                Coconut Plantation</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">
+            Publish Post to Community
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. OPPORTUNITY DETAILS & APPLY MODAL (PRD Section 13) -->
+  <div id="modalOpportunity" class="modal-backdrop">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="oppModalTitle">Opportunity Details</h3>
+        <button class="modal-close-btn" onclick="closeModal('modalOpportunity')">✕</button>
+      </div>
+      <div class="modal-body">
+        <span id="oppModalBadge" class="opp-type-badge">Agri-tech Project</span>
+        <h2 id="oppModalMainTitle" style="font-size:1.4rem; color:var(--primary-800); margin-bottom:4px;">Title</h2>
+        <div id="oppModalOrg" style="font-size:0.9rem; color:var(--earth-brown); font-weight:600; margin-bottom:14px;">
+          Organization</div>
+
+        <div
+          style="background:var(--bg-card-subtle); padding:12px 16px; border-radius:8px; margin-bottom:16px; font-size:0.85rem; display:flex; justify-content:space-between;">
+          <div>Location: <strong id="oppModalLocation">Remote</strong></div>
+          <div>Stipend: <strong id="oppModalStipend">₹25,000 / mo</strong></div>
+        </div>
+
+        <p id="oppModalDesc" style="font-size:0.92rem; color:var(--text-muted); line-height:1.6; margin-bottom:20px;">
+          Description
+        </p>
+
+        <!-- Apply Form -->
+        <div style="border-top:1px solid var(--border-subtle); padding-top:16px;">
+          <h4 style="font-size:1rem; color:var(--primary-800); margin-bottom:10px;">Apply / Express Interest</h4>
+          <form onsubmit="handleApplyOpportunity(event)">
+            <div class="form-group">
+              <label>Your Full Name</label>
+              <input type="text" id="oppApplyName" class="form-control" required value="Arun Kumar">
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="oppApplyEmail" class="form-control" required value="arun.kumar@veeramail.in">
+            </div>
+            <div class="form-group">
+              <label>Relevant Background / Farm or Tech Skills</label>
+              <textarea id="oppApplyNotes" class="form-control" rows="2"
+                placeholder="Why are you interested in this project?">Experienced progressive farmer with 4.5 acres in Coimbatore, interested in field trial validation.</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">
+              Submit Application
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. BUY NOW MODAL (Buyer-only, direct purchase enquiry) -->
+  <div id="modalBuyNow" class="modal-backdrop">
+    <div class="modal-container" style="max-width:520px;">
+      <div class="modal-header"
+        style="background:linear-gradient(135deg,var(--primary-800),var(--primary-700)); color:#fff; border-radius:var(--radius-md) var(--radius-md) 0 0;">
+        <h3 class="modal-title" id="buyNowModalTitle" style="color:#fff;">Buy Now</h3>
+        <button class="modal-close-btn" onclick="closeModal('modalBuyNow')"
+          style="color:#fff; background:rgba(255,255,255,0.15);">✕</button>
+      </div>
+      <div class="modal-body">
+        <!-- Product Summary Strip -->
+        <div
+          style="display:flex;align-items:center;gap:14px;background:var(--bg-card-subtle);padding:14px;border-radius:var(--radius-sm);margin-bottom:18px;border:1px solid var(--border-subtle);">
+          <img id="buyNowProdImg" src="" alt="Product"
+            style="width:64px;height:64px;border-radius:10px;object-fit:cover;flex-shrink:0;">
+          <div style="flex:1;">
+            <div id="buyNowProdName" style="font-weight:800;font-size:1rem;color:var(--primary-800);margin-bottom:2px;">
+              Product Name</div>
+            <div id="buyNowProdFarmer" style="font-size:0.8rem;color:var(--text-light);margin-bottom:6px;">by Farmer
+              Name</div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span id="buyNowProdPrice" style="font-size:1.2rem;font-weight:800;color:var(--secondary);">₹0</span>
+              <span id="buyNowProdUnit" style="font-size:0.78rem;color:var(--text-light);">per kg</span>
+            </div>
+          </div>
+        </div>
+
+        <form onsubmit="handleBuyNowSubmit(event)">
+          <input type="hidden" id="buyNowProductId">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="form-group">
+              <label>Your Name / Organization</label>
+              <input type="text" id="buyNowBuyerName" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Quantity Required</label>
+              <input type="text" id="buyNowQty" class="form-control" placeholder="e.g. 50 kg" required value="50 kg">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Delivery Address / City</label>
+            <input type="text" id="buyNowDelivery" class="form-control" placeholder="e.g. Bengaluru, Karnataka"
+              required>
+          </div>
+          <div class="form-group">
+            <label>Message to Farmer</label>
+            <textarea id="buyNowMessage" class="form-control" rows="2"
+              placeholder="Preferred delivery date, quality specs, or packaging notes...">Please deliver at the earliest. Looking for chemical-free certified produce.</textarea>
+          </div>
+          <div id="buyNowEstimate"
+            style="background:var(--secondary-subtle);border:1px solid var(--border-green);padding:12px 16px;border-radius:var(--radius-sm);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.85rem;color:var(--primary-800);font-weight:600;">Estimated Order Value</span>
+            <span id="buyNowEstValue" style="font-size:1.1rem;font-weight:800;color:var(--primary-800);">₹0</span>
+          </div>
+          <button type="submit" class="btn btn-primary"
+            style="width:100%;background:linear-gradient(135deg,var(--primary-800),var(--secondary));padding:13px;font-size:1rem;">
+            ⚡ Confirm Buy Now — Send to Farmer
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST SHELF CONTAINER -->
+  <div id="toastShelf" class="toast-shelf"></div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
