@@ -598,7 +598,7 @@ function createProductCardHtml(prod) {
           </div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;">
             <button class="btn btn-primary btn-sm" onclick="openProductModal('${prod.id}')">View Product</button>
-            <button class="btn btn-accent btn-sm" onclick="openBuyNowModal('${prod.id}')">⚡ Buy Now</button>
+            <button class="btn btn-accent btn-sm" onclick="openBuyNowModal('${prod.id}')">Buy Now</button>
           </div>
         </div>
       </div>
@@ -830,7 +830,7 @@ function handleBuyNowSubmit(event) {
   persistState();
   renderDashboard();
   closeModal('modalBuyNow');
-  showToast(`⚡ Buy Now order sent to ${prod.farmerName}! They will contact you for dispatch.`, 'success');
+  showToast(`Buy Now order sent to ${prod.farmerName}! They will contact you for dispatch.`, 'success');
 }
 
 // =============================================================================
@@ -1125,16 +1125,6 @@ function renderCommunityPosts(filterCat) {
           Share a farm harvest update, agronomy question, or field photo...
         </button>
         <button class="btn btn-primary btn-sm" onclick="openCreatePostModal()">Post</button>
-      </div>`;
-  } else {
-    createBoxHtml = `
-      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:var(--radius-md); padding:14px 18px; margin-bottom:18px; display:flex; align-items:center; gap:12px;">
-        <span class="post-preview-tag">Preview</span>
-        <div>
-          <strong style="color:#1e40af; font-size:0.88rem;">Viewing as Buyer</strong>
-          <p style="font-size:0.8rem; color:#3b82f6; margin-top:1px;">You can like, comment and share posts. Switch to Farmer mode to publish new posts.</p>
-        </div>
-        <button class="btn btn-sm" style="background:#1e40af; color:#fff; white-space:nowrap; margin-left:auto;" onclick="window.location.href='login.html'">Switch to Farmer</button>
       </div>`;
   }
 
